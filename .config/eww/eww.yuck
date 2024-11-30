@@ -1,0 +1,69 @@
+
+(defwidget closer [window]
+  
+  (eventbox  :onclick "eww close ${window} && eww close ${window}-closer"))
+ 
+(defwindow barCenter-closer
+  :monitor 0
+  :geometry (geometry :width "100%" :height "100%")
+  :class "quitcl"
+  :stacking "fg"
+  :focusable false
+  :wm-ignore false
+  (closer :window "barCenter"))
+
+
+(defwidget barCenterWidget [window]
+        (box    :orientation "h"
+                :space-evenly false
+                :class "bar"
+                :spacing "50"
+                :halign "center"
+                :valign "center"
+
+                (button :class "cyan"
+                        :onclick "wofi -show drun& eww close ${window} && eww close ${window}-closer" "")
+
+                (button :class "pink"
+                        :onclick "dolphin /home/clement& eww close ${window} && eww close ${window}-closer" "")
+
+                (button :class "green"
+                        :onclick "firefox& eww close ${window} && eww close ${window}-closer" "")
+
+                (button :class "purple"
+                        :onclick "vesktop& eww close ${window} && eww close ${window}-closer" "")
+
+                (button :class "blue"
+                        :onclick "wlogout& eww close ${window} && eww close ${window}-closer" "󱓞")
+    )
+)
+
+;; (defwidget weather_side [] 
+;;       (box :orientation "h" :space-evenly "false" 
+;;         (box :class "weather-icon-side" :style "color: ${weather-hex}" {weather-icon})
+;;         (box :class "weather-info-side" :orientation "v" :space-evenly "false" 
+;;           (box :class "temperature-side" "${temperature}  ")
+;;           (box :class "weather-stat-side" {weather-stat-side}))))
+
+
+(defwindow weather 
+        :monitor 0
+        :geometry (geometry     :x "0"
+                                :y "205px"
+                                :width "700px"
+                                :height "80px"
+                                :anchor "center top")
+        :windowtype "dock"
+        :wm-ignore true
+(weather))
+
+(defwindow barCenter
+        :monitor 0
+        :geometry (geometry     :x "0"
+                                :y "205px"
+                                :width "700px"
+                                :height "80px"
+                                :anchor "center center")
+        :windowtype "dock"
+        :wm-ignore true
+(barCenterWidget :window "barCenter"))

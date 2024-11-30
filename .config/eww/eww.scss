@@ -1,0 +1,61 @@
+$mauve: red;
+$base: blue;
+$font-highlight: #6e99ef;
+$font: #ffffff;
+
+@keyframes fademv {
+  from {
+    color: $font;
+  }
+  to {
+    color: $font-highlight;
+  }
+}
+
+.quitcl{
+  /* background-color: rgba(10, 10, 10, 0.2); */
+  background-color: red;
+  color: rgba(10, 10, 10, 0.5);
+  /* opacity: 0; */
+}
+
+*{
+  all: unset;
+  background-color: #1B2020;
+  font-family: 'Lilex Nerd Font';
+  border-radius: 10px;
+}
+
+.bar{
+  font-size: 50px;
+}
+
+.bar > .cyan:hover {
+  color: $font;
+  animation-name: fademv;
+  animation-duration: 2s;
+}
+
+.bar > .pink:hover {
+  color: $font;
+  animation-name: fademv;
+  animation-duration: 2s;
+}
+
+.bar > .green:hover {
+  color: $font;
+  animation-name: fademv;
+  animation-duration: 2s;
+}
+
+.bar > .purple:hover {
+  color: $font;
+  animation-name: fademv;
+  animation-duration: 2s;
+}
+
+.bar > .blue:hover {
+  color: $font;
+  animation-name: fademv;
+  animation-duration: 2s;
+}

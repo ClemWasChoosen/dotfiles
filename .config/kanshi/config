@@ -1,0 +1,15 @@
+profile {
+    output eDP-1 disable
+    output DP-1 mode 2560x1440@71.97 position 0,0
+}
+
+
+profile {
+    output eDP-1 disable
+    output DP-3 mode 2560x1440@71.97 position 0,0
+}
+
+profile {
+    output eDP-1 mode 2880x1800@90.00 position 0,0 scale 1.8
+}
+
