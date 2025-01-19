@@ -8,6 +8,8 @@
 @define-color textcolor3 #000000;
 @define-color textcolor4 #a0a0a0;
 @define-color iconcolor #FFFFFF;
+@define-color redcolor #ad212f;
+@define-color yellowcolor #dfaf2e;
 
 
 /* -----------------------------------------------------
@@ -28,6 +30,7 @@
 window#waybar {
     background-color: rgba(0,0,0,0.8);
     border-bottom: 0px solid #ffffff;
+    margin-top: 10px;
     /* color: #FFFFFF; */
     /* background: transparent; */
     transition-property: background-color;
@@ -76,6 +79,11 @@ window#waybar {
     /* min-width: 2px; */
     /* transition: all 0.3s ease-in-out; */
     /* opacity:1.0; */
+}
+
+#workspaces button.occupied {
+    color: blue;
+    font-size: 18px;
 }
 
 #workspaces button.hover {
@@ -477,16 +485,21 @@ window#waybar.empty #window {
 
 @keyframes blink {
     to {
-        background-color: @backgroundlight;
-        color: @textcolor2;
+        /* background-color: @backgroundlight; */
+        color: @redcolor;
     }
 }
 
+#battery.warning:not(.charging):not(.critical) {
+    /* background-color: #f53c3c; */
+    color: @yellowcolor;
+}
+
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: @textcolor3;
+    /* background-color: #f53c3c; */
+    color: @iconcolor;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;

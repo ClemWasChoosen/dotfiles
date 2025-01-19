@@ -96,9 +96,7 @@ require('lazy').setup({
             left_bottom = "╰",
             right_arrow = ">",
           },
-          style = {
-            {  fg = "#806d9c", bg = "#3e3d32"  },
-          },
+          style = "#806d9c",
         },
         indent = { enable = false },
         line_num = { enable = true },
@@ -338,13 +336,15 @@ require('lazy').setup({
   },
 
   {
-    "sainnhe/gruvbox-material",
-    name = "gruvbox-material",
+    'sainnhe/gruvbox-material',
+    lazy = false,
     priority = 1000,
-
     config = function()
-      vim.cmd.colorscheme 'gruvbox-material'
-    end,
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.gruvbox_material_enable_italic = true
+      vim.cmd.colorscheme('gruvbox-material')
+    end
   },
 
    -- Pour avoir le theme comme atom
@@ -410,8 +410,8 @@ require('lazy').setup({
     "zaldih/themery.nvim",
     config = function()
       require('themery').setup({
-        themes = { "miasma", "catppuccin-mocha", "everforest", "gruvbox-material", "leaf"},  -- Liste des thèmes que vous voulez charger
-        -- themeConfigFile = "~/.config/nvim/lua/theme.lua",  -- Fichier pour sauvegarder les configurations
+        themes = { "miasma", "catppuccin-mocha", "everforest", "gruvbox-material", "leaf", ""},  -- Liste des thèmes que vous voulez charger
+        themeConfigFile = "~/.config/nvim/lua/theme.lua",  -- Fichier pour sauvegarder les configurations
       })
     end,
   },
@@ -536,6 +536,7 @@ vim.o.termguicolors = true
 
 -- Mettre en surbrillance la ligne où se trouve le curseur
 vim.wo.cursorline = true
+
 
 -- Garder le curseur centré dans la fenêtre active
 vim.o.scrolloff = 999

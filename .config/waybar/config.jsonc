@@ -18,12 +18,13 @@
         //"mpd",
         //"idle_inhibitor",
         //"pulseaudio",
-        "custom/wl-gammarelay-temperature",
+        // "custom/wl-gammarelay-temperature",
         // "power-profiles-daemon",
         // "cpu",
         // "memory",
         //"temperature",
-        "backlight",
+        // "backlight",
+        "hyprland/language",
         //"keyboard-state",
         //"sway/language",
         "battery",
@@ -65,7 +66,11 @@
      //         "default": ""
      //     }
      // },
-
+     "hyprland/language": {
+         "format": "{}",
+         "format-en": " E",
+         "format-fr": " F"
+     },
      "hyprland/window": {
          "format": "{icon}{windows}",
          "window-rewrite-default": "󱓞",
@@ -90,16 +95,16 @@
         "format-icons": {
 
             "1": "•",
-            "2": "•",
-            "3": "•",
-            "4": "•",
-            "5": "•",
+            // "2": "•",
+            // "3": "•",
+            // "4": "•",
+            // "5": "•",
             "urgent": "•",
             "active": "",
-            "default": ""
+            "default": "•"
         },
         "persistent-workspaces": {
-            "*": 5
+            "*": 1
         }       
     },
 
@@ -201,12 +206,13 @@
     // },
     "battery": {
     "states": {
-        "warning": 30,
-        "critical": 15
+        "warning": 40,
+        "critical": 20
     },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% {icon}",
-    "format-plugged": "{capacity}% {icon}",
+    "format": "{icon}",
+    // "format": "{capacity}% {icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "{icon}",
     "format-alt": "{time} {icon}",
     "icon-size": 30,
     "format-icons": {
@@ -233,9 +239,9 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         // "format-wifi": "{essid} ({signalStrength}%) ",
         "format-wifi": "󰖩 ({signalStrength}%)",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰞴",
         "tooltip-format": "{essid}",
-        "format-linked": "{ifname} (No IP) ",
+        "format-linked": "{ifname} (No IP) 󱑧",
         "format-disconnected": "󰖪",
 	"on-click": "exec networkmanager_dmenu"
     },
@@ -291,9 +297,10 @@
     },   
 
     // Power Menu
+    // eww open barCenter-closer && 
     "custom/exit": {
         "format": "",
-        "on-click": "eww open barCenter-closer && eww open barCenter",
+        "on-click": "eww open mainWidget",
         "tooltip-format": "Power Menu"
     },
 

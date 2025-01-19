@@ -1,42 +1,65 @@
 
-(defwidget closer [window]
-  
-  (eventbox  :onclick "eww close ${window} && eww close ${window}-closer"))
- 
-(defwindow barCenter-closer
-  :monitor 0
-  :geometry (geometry :width "100%" :height "100%")
-  :class "quitcl"
-  :stacking "fg"
-  :focusable false
-  :wm-ignore false
-  (closer :window "barCenter"))
 
+;;
+;; (defwidget closer [window]
+;;   
+;;   (eventbox :class "quitcl" :onclick "eww close ${window} && eww close ${window}-closer"))
+;;  
+;; (defwindow barCenter-closer
+;;   :monitor 0
+;;   :geometry (geometry :width "100%" :height "100%")
+;;   :stacking "fg"
+;;   :class "quitcl"
+;;   :namespace "ewww-test"
+;;   :focusable true
+;;   :wm-ignore false
+;;   (closer :window "barCenter"))
 
-(defwidget barCenterWidget [window]
-        (box    :orientation "h"
-                :space-evenly false
-                :class "bar"
-                :spacing "50"
-                :halign "center"
-                :valign "center"
-
-                (button :class "cyan"
-                        :onclick "wofi -show drun& eww close ${window} && eww close ${window}-closer" "")
-
-                (button :class "pink"
-                        :onclick "dolphin /home/clement& eww close ${window} && eww close ${window}-closer" "")
-
-                (button :class "green"
-                        :onclick "firefox& eww close ${window} && eww close ${window}-closer" "")
-
-                (button :class "purple"
-                        :onclick "vesktop& eww close ${window} && eww close ${window}-closer" "")
-
-                (button :class "blue"
-                        :onclick "wlogout& eww close ${window} && eww close ${window}-closer" "󱓞")
-    )
-)
+;; Music vars
+;; (defpoll SONGTITLE :interval "1s" `~/.config/eww/scripts/music.sh title`)
+;; Variables pour Spotify
+;; (defpoll SONGTITLE :interval "1s" `~/.config/eww/scripts/music.sh title`)
+;; (defpoll ALBUM :interval "1s" `~/.config/eww/scripts/music.sh album`)
+;; (defpoll ARTURL :interval "1s" `~/.config/eww/scripts/music.sh art_url`)
+;;
+;; (defwidget spotifyWidget []
+;;   (box :orientation "h"
+;;        :class "spotify_widget"
+;;        :spacing "10px"
+;;        :halign "center"
+;;        :valign "center"
+;;        (image :path ARTURL :width "150px" :height "150px" :class "spotify_album_art")
+;;        (box :orientation "v"
+;;             :halign "start"
+;;             (label :text SONGTITLE :class "spotify_title")
+;;             (label :text ALBUM :class "spotify_album"))))
+;; ;; (defpoll ARTIST :interval "1s" `scripts/music_info --artist`)
+;;
+;; (defwidget barCenterWidget [window]
+;;         (box    :orientation "h"
+;;                 :space-evenly false
+;;                 :class "bar"
+;;                 :spacing "50"
+;;                 :halign "center"
+;;                 :valign "center"
+;;
+;;                 (button :class "cyan"
+;;                         :onclick "wofi -show drun& eww close ${window}" "")
+;;
+;;                 (button :class "pink"
+;;                         :onclick "dolphin /home/clement& eww close ${window}" "")
+;;
+;;                 (button :class "green"
+;;                         :onclick "firefox& eww close ${window}" "")
+;;
+;;                 (button :class "purple"
+;;                         :onclick "vesktop& eww close ${window}" "")
+;;
+;;                 (button :class "blue"
+;;                         :onclick "wlogout& eww close ${window}" "󱓞")
+;;         ;; Ajouter le widget Spotify
+;;         (spotifyWidget))
+;; )
 
 ;; (defwidget weather_side [] 
 ;;       (box :orientation "h" :space-evenly "false" 
@@ -46,24 +69,189 @@
 ;;           (box :class "weather-stat-side" {weather-stat-side}))))
 
 
-(defwindow weather 
-        :monitor 0
-        :geometry (geometry     :x "0"
-                                :y "205px"
-                                :width "700px"
-                                :height "80px"
-                                :anchor "center top")
-        :windowtype "dock"
-        :wm-ignore true
-(weather))
+;; (defwindow weather 
+;;         :monitor 0
+;;         :geometry (geometry     :x "0"
+;;                                 :y "205px"
+;;                                 :width "700px"
+;;                                 :height "80px"
+;;                                 :anchor "center top")
+;;         :windowtype "dock"
+;;         :wm-ignore true
+;; (weather))
 
-(defwindow barCenter
+                                ;; :y "205px"
+                                ;; :width "700px"
+                                ;; :height "80px"
+;; (defwindow barCenter
+;;         :monitor 0
+;;         :geometry (geometry     :x "0"
+;;                                 :y "205px"
+;;                                 :width "700px"
+;;                                 :height "500px"
+;;                                 :anchor "center center")
+;;         :windowtype "dock"
+;;         :wm-ignore true
+;; (barCenterWidget :window "barCenter"))
+
+;; Variables pour Spotify
+(defpoll SONGTITLE :interval "3s" `~/.config/eww/scripts/music.sh title`)
+(defpoll ALBUM :interval "3s" `~/.config/eww/scripts/music.sh album`)
+(defpoll ARTURL :interval "3s" `~/.config/eww/scripts/music.sh art_url`)
+(defpoll ARTIST :interval "3s" `~/.config/eww/scripts/music.sh artist`)
+(defpoll LOCAL_ART_PATH :interval "3s" `~/.config/eww/scripts/music.sh image`)
+
+;; Time vars
+(defpoll HOURMIN :interval "5s" `date +\"%H:%M\"`)
+(defpoll DATEDMY :interval "5s" `date +\"%A, %e %B %Y\"`)
+(defpoll MIN :interval "5s" `date +\"%M\"`)
+(defpoll MER :interval "5s" `date +\"%p\"`)
+(defpoll DAY :interval "5s" `date +\"%A\"`)
+
+;; Pour les valeurs systeme
+(defpoll BRIGHT :interval "1s" `~/.config/eww/scripts/sysbright.sh`)
+(defpoll TEMP :interval "1s" `~/.config/eww/scripts/systemp.sh`)
+(defpoll WIFI :interval "1s" `~/.config/eww/scripts/wifi.sh`)
+(defpoll BLUETOOTH :interval "1s" `~/.config/eww/scripts/bluetooth.sh`)
+
+;; (defpoll WL-GAMMA-VALUE :interval "5s" `wl-gammarelay-rs watch {t}`)
+(defvar current-sys 0)
+
+
+(defwidget hourWidget []
+	(box :class "hourWidget" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"  
+		(box :orientation "h"
+			(label :class "time_hour" :halign "end" :wrap "true" :text HOURMIN))
+		(box :orientation "v"  
+			(label :class "time_day" :valign "start" :halign "end" :wrap "true" :text DATEDMY)
+                        ;; (label :class "time_day" :valign "start" :halign "end" :wrap "true" :text "Hello")
+                        )))
+
+;; system
+(defwidget systemWidget [] 
+        
+        (box :orientation "v" :halign "center" :valign "center" :space-evenly "false" :vexpand "false" :hexpand "false" :spacing 5
+       
+       (box :class "bright_bar" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
+               (label :class "iconbright" :text 
+                       {BRIGHT / 10 <= 1 ? "" :
+                       BRIGHT / 10 <= 2 ? "" :
+                       BRIGHT / 10 <= 3 ? "" :
+                       BRIGHT / 10 <= 4 ? "" :
+                       BRIGHT / 10 <= 5 ? "" :
+                       BRIGHT / 10 <= 6 ? "" :
+                       BRIGHT / 10 <= 7 ? "" :
+                       BRIGHT / 10 <= 8 ? "" :
+                       BRIGHT / 10 <= 9 ? "" :
+                       "" })
+               ;; (transform :translate-x "5px"
+               ;; (label :class "valuebright" :angle 90 :text BRIGHT)
+               ;; )
+               (scale :min 0 :max 100 :value BRIGHT :active "true" :onchange "brightnessctl set {}%")
+               )
+       
+       (box :class "temp_bar" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
+               (label :class "icontemp" :text 
+                       {
+                       TEMP <= 2000 ? "" :
+                       TEMP <= 4000 ? "" :
+                       TEMP <= 6000 ? "" :
+                       TEMP <= 8000 ? "" :
+                       ""
+                       }
+                       )
+               ;; (transform :translate-x "5px"
+               ;; (label :class "valuebright" :angle 90 :text "${TEMP/1000}")
+               ;; )
+               (scale :min 0 :max 10000 :value TEMP :active "true" :onchange "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q {}")
+               )
+       ;; (box :class "bright_bar" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
+       ;;         (label :class "iconbright" :text "4")
+       ;;         (scale :min 0 :max 10000 :value WL-GAMMA-VALUE :active "false"))
+
+       ))
+
+(defwidget systrayicons [window]
+  (box 
+       :class "systray_widg"
+       :orientation "h"
+
+       (button :onclick "exec networkmanager_dmenu & eww close ${window}" 
+                       {
+                       WIFI <= -1 ? "" :
+                       WIFI <= 1 ? "󰤟" :
+                       WIFI <= 2 ? "󰤢" :
+                       WIFI <= 3 ? "󰤥" :
+                       WIFI <= 4 ? "󰤨" :
+                       "󰤭"
+                       }
+        )
+       (button :onclick "blueman-manager& eww close ${window}" 
+                       {
+                       BLUETOOTH == true ? "󰂰" :
+                       "󰂲"
+                       }
+)
+       ;; (button :onclick "󰖩")
+       ;; (button :onclick "󰖩")
+  )
+)
+
+;; Widget Spotify
+(defwidget spotifyWidget []
+  (box :orientation "v"
+       :class "spotify_widget"
+       :space-evenly "none"
+       :vexpand "false" 
+       :hexpand "false" 
+	(box :class "album_art" :vexpand "false" :hexpand "false" :style "background-image: url('${LOCAL_ART_PATH}');")
+	(box :orientation "v" :spacing 0 :space-evenly "false" :vexpand "false" :hexpand "false" 
+        	(label :halign "center" :class "song" :wrap "true" :limit-width 30 :text SONGTITLE)
+		(label :halign "center" :class "artist" :wrap "true" :limit-width 15 :text ARTIST)
+                )))
+
+;; Barre centrale existante
+(defwidget barCenterWidget [window]
+  (box :orientation "h"
+       :space-evenly "false"
+       :class "bar"
+       :spacing 0
+       :halign "center"
+       :valign "start"
+          :vexpand "false" :hexpand "false" 
+       (button :class "blue"
+               :onclick "wlogout& eww close ${window}" "󱓞")))
+
+       ;; ;; Boutons existants
+       ;; (button :class "cyan"
+       ;;         :onclick "wofi -show drun& eww close ${window}" "")
+       ;; (button :class "pink"
+       ;;         :onclick "dolphin /home/clement& eww close ${window}" "")
+       ;; (button :class "green"
+       ;;         :onclick "firefox& eww close ${window}" "")
+       ;; (button :class "purple"
+       ;;         :onclick "vesktop& eww close ${window}" "")
+;; Fenêtre principale contenant les deux widgets
+(defwindow mainWidget
         :monitor 0
-        :geometry (geometry     :x "0"
-                                :y "205px"
-                                :width "700px"
-                                :height "80px"
-                                :anchor "center center")
-        :windowtype "dock"
-        :wm-ignore true
-(barCenterWidget :window "barCenter"))
+        :geometry (geometry :x "0"
+                            :y "9px"
+                            :width "400px"
+                            :height "500px"
+                            :anchor "center top")
+        :wm-ignore "true"
+        :vexpand "false" :hexpand "false" 
+  (box :orientation "v"
+       :spacing 0
+       :halign "center"
+       :valign "start"
+          :vexpand "false" :hexpand "false" 
+       (hourWidget)
+       ;; Widget Spotify
+
+       (systrayicons :window "mainWidget")
+       (systemWidget)
+       ;; (spotifyWidget)
+       ;; Barre centrale
+       (barCenterWidget :window "mainWidget")))
+

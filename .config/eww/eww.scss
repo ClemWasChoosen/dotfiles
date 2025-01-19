@@ -3,6 +3,7 @@ $base: blue;
 $font-highlight: #6e99ef;
 $font: #ffffff;
 
+
 @keyframes fademv {
   from {
     color: $font;
@@ -14,9 +15,14 @@ $font: #ffffff;
 
 .quitcl{
   /* background-color: rgba(10, 10, 10, 0.2); */
-  background-color: red;
-  color: rgba(10, 10, 10, 0.5);
+  /* background-color: transparent; */
+  /* color: rgba(10, 10, 10, 0.5); */
   /* opacity: 0; */
+  background: rgba(30, 30, 46, 0.6);
+}
+
+.spotify_widget{
+  color: red;
 }
 
 *{
@@ -24,38 +30,186 @@ $font: #ffffff;
   background-color: #1B2020;
   font-family: 'Lilex Nerd Font';
   border-radius: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .bar{
   font-size: 50px;
 }
 
-.bar > .cyan:hover {
-  color: $font;
-  animation-name: fademv;
-  animation-duration: 2s;
-}
+/* .bar > .cyan:hover { */
+/*   color: $font; */
+/*   animation-name: fademv; */
+/*   animation-duration: 2s; */
+/* } */
 
-.bar > .pink:hover {
-  color: $font;
-  animation-name: fademv;
-  animation-duration: 2s;
-}
-
-.bar > .green:hover {
-  color: $font;
-  animation-name: fademv;
-  animation-duration: 2s;
-}
-
-.bar > .purple:hover {
-  color: $font;
-  animation-name: fademv;
-  animation-duration: 2s;
-}
-
+/* .bar > .pink:hover { */
+/*   color: $font; */
+/*   animation-name: fademv; */
+/*   animation-duration: 2s; */
+/* } */
+/**/
+/* .bar > .green:hover { */
+/*   color: $font; */
+/*   animation-name: fademv; */
+/*   animation-duration: 2s; */
+/* } */
+/**/
+/* .bar > .purple:hover { */
+/*   color: $font; */
+/*   animation-name: fademv; */
+/*   animation-duration: 2s; */
+/* } */
+/**/
 .bar > .blue:hover {
-  color: $font;
+  color: $font-highlight;
   animation-name: fademv;
   animation-duration: 2s;
 }
+
+
+/** Music ***************************************/
+.album_art {
+	background-size: 200px;
+	min-height: 200px;
+	min-width: 200px;
+	border-radius: 14px;
+        background-repeat: no-repeat;
+        background-position: center;
+}
+
+.song {
+	color: #6BB2C0;
+	font-size : 24px;
+	font-weight : bold;
+}
+
+.artist {
+	color: #EBCB8D;
+	font-size : 16px;
+	font-weight : normal;
+}
+
+.btn_prev, .btn_play, .btn_next {
+	font-family: Iosevka Nerd Font;
+}
+.btn_prev {
+	color: #EBCB8D;
+	font-size : 32px;
+	font-weight : normal;
+}
+.btn_play {
+	color: #98C379;
+	font-size : 48px;
+	font-weight : bold;
+}
+.btn_next {
+	color: #EBCB8D;
+	font-size : 32px;
+	font-weight : normal;
+}
+
+.music_bar scale trough highlight {
+	all: unset;
+	background-color: #BC7AD9;
+	border-radius: 8px;
+}
+/* .music_bar scale trough { */
+/* 	all: unset; */
+/* 	background-color: #282C34; */
+/* 	border-radius: 8px; */
+/* 	min-height: 20px; */
+/* 	min-width: 310px; */
+/* } */
+
+/** Clock ********************************************/
+.hourWidget{
+  /* border: 2px solid red; */
+  
+}
+.time_hour, .time_min, .time_dots {
+	color: $font;
+	font-size : 50px;
+	font-weight : bold;
+}
+
+.time_day {
+	color: $font;
+	font-size : 20px;
+        font-style: italic;
+}
+
+
+
+/** System Slider ********************************************/
+.iconbright, .icontemp {
+	font-weight : normal;
+	font-size: 24px;
+}
+
+.valuebright {
+	font-size: 20px;
+	color: $font;
+}
+
+.iconbright {
+	color: #e0af68;
+	margin-right: 10px;
+}
+.icontemp {
+	color: #e0af68;
+	margin-right: 9px;
+}
+
+.bright_bar, .temp_bar, scale trough {
+
+	all: unset;
+	background-color: #282C34;
+	border-radius: 16px;
+	min-height: 18px;
+	min-width: 240px;
+}
+
+.bright_bar, .temp_bar, scale trough highlight {
+	all: unset;
+	border-radius: 16px;
+}
+
+.bright_bar scale trough highlight {
+	background-color: #e0af68;
+}
+.temp_bar scale trough highlight {
+	background-color: #e0af68;
+}
+
+
+/** System ********************************************/
+.systray_widg {
+	/* border: red solid 3px; */
+	font-size: 30px;
+}
+
+.sysWifiBut1 {
+	border: red solid 3px;
+	min-width: 30px;
+}
+
+.sysWifiLab {
+	color: #EBCB8D;
+	font-size : 16px;
+	font-weight : normal;
+	border: green solid 3px;
+}
+
+.sysWifiButNext {
+
+	border: yellow solid 3px;
+}
+
+.stack_systray {
+	border: blue solid 3px;
+}
+
+/** Syst Row ********************************************/
+
